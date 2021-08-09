@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Edit User</title>
+    <link rel='stylesheet' href='styles.css' />
+  </head>
+  <body>
+    <div>
+      <h1>Edit User</h1>
+      <form action="">
+        <div>
+          <label>ID</label>
+          <input type="text" id='id' disabled/>
+        </div>
+
+        <div>
+          <label>Full Name</label>
+          <input type="text" id='name' />
+        </div>
+
+        <div>
+          <label>Username</label>
+          <input type="text" id='username' />
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input type="text" id='email' />
+        </div>
+
+        <div>
+          <label>Phone</label>
+          <input type="text" id='phone' />
+        </div>
+
+        <div>          
+          <label>Website</label>
+          <input type="text" id='website' />
+        </div>
+
+        <div>
+          <button>Update Details</button>
+          <button id='noUpdate'>
+            Return Without Updating
+          </button>
+          <button>Delete This User</button>
+        </div>
+      </form>
+
+    </div>
+  </body>
+
+  <script>
+
+    // load user values into edit form
+    const idField = document.getElementById('id');
+    const nameField = document.getElementById('name');
+    const usernameField = document.getElementById('username');
+    const emailField = document.getElementById('email');
+    const phoneField = document.getElementById('phone');
+    const websiteField = document.getElementById('website');
+
+    const { userId, name, username, email, phone, website } = Object.fromEntries(new URLSearchParams(window.location.search));
+
+    idField.value = userId;
+    nameField.defaultValue = name;
+    usernameField.defaultValue = username;
+    emailField.defaultValue = email;
+    phoneField.defaultValue = phone;
+    websiteField.defaultValue = website;
+
+    // click listeners
+    const noUpdateButton = document.getElementById('noUpdate');
+    noUpdateButton.addEventListener('click', event => {
+      event.preventDefault();
+      location.href = 'index.html';
+    });
+
+  </script>
+</html>
